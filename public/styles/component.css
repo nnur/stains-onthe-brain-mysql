@@ -60,13 +60,15 @@ h4, h3 {
 	color: #ed4e6e;
 }
 
+
+
 .grid figcaption h3 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
 }
 
-
+/* colour for user/match box */
 .grid figcaption a {
 	text-align: center;
 	padding: 5px 10px;
