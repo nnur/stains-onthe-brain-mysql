@@ -34,11 +34,15 @@
          templateUrl: 'pages/mystains.html',
          controller: 'mystainsController'
      })
-
      // contact page
      .when('/profile', {
          templateUrl: 'pages/profile.html',
          controller: 'profileController'
+     })
+     //signup page
+     .when('/signup', {
+         templateUrl: 'pages/signup.html',
+         controller: 'signupController'
      });
 
  });

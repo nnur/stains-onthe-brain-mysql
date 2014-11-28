@@ -53,6 +53,35 @@ module.exports = function(app) {
         }
     });
 
+    app.post("/user/create", function(req, res) {
+        console.log(req.body);
+
+        var values =
+            "(username, password, firstname, lastname, email, level_num, country, gender, preference)";
+
+        var post = "INSERT INTO user" + values + "VALUES (" + "'" + req.body.username + "'" + "," +
+            "'" + req.body.password + "'" + "," +
+            "'" + req.body.firstname + "'" + "," +
+            "'" + req.body.lastname + "'" + "," +
+            "'" + req.body.email + "'" + "," +
+            "'" + req.body.level_num + "'" + "," +
+            "'" + req.body.country + "'" + "," +
+            "'" + req.body.gender + "'" + "," +
+            "'" + req.body.preference + "'" + ")";
+
+
+        console.log(' in a pie ' + post);
+
+        connection.query(post, function(error) {
+            if (error) {
+
+                console.log(error.message);
+            } else {
+                console.log('post ');
+
+            }
+        });
+    });
 
 
 }
