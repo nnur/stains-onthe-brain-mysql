@@ -1,11 +1,23 @@
 // create the controller and inject Angular's $scope
 var user_id;
+var currentUser;
 var allMatchs = [];
 var currentMatchIndex = 0; //default is the first match in the array
 
 
 
 myapp.controller('profileController', function($scope, $http) {
+
+
+    /* USE THIS BEFORE ENTERING ANY USER-SPECIFIC PAGE */
+    $http.get("/authorize").success(function(res) {
+
+        if (res) { //if res is false, nobody is logged in
+            currentUser = res; //otherwise, res stores the current user
+        }
+
+    });
+
 
     //left button
     $scope.previousMatch = function() { //make the decrements circular

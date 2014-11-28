@@ -9,6 +9,8 @@ var connection = mysql.createConnection({
     database: 'stains',
 });
 
+var currentUser = null;
+
 connection.connect();
 
 
@@ -17,11 +19,11 @@ connection.connect();
 
 module.exports = function(app) {
 
-    app.get('/test', function(req, res) {
-
-        console.log('IN TEST');
-        res.send('heheh');
+    //use this to check the current user
+    app.get('/authorize', function(req, res) {
+        res.send(currentUser);
     });
+
 
     //Query by username
     app.get('/user/:username', function(req, res) {
@@ -33,6 +35,9 @@ module.exports = function(app) {
 
             });
     });
+
+
+
     //Query by user_id
     app.get('/user_id/:user_id', function(req, res) {
         connection.query('SELECT * FROM user WHERE (user_id = "' + req.params.user_id + '")',
@@ -55,6 +60,25 @@ module.exports = function(app) {
                 res.json(rows);
 
             });
+    });
+
+    //LOGIN
+    app.get('/login/:username/:password', function(req, res) {
+
+        var username = req.params.username;
+        var password = req.params.password;
+
+        console.log('u ' + username + " p " + password);
+
+        var queryText = "SELECT * FROM user WHERE (username= '" + username + "'" + "AND" + " password='" + password + "')";
+
+        //check if the user is in the database
+        connection.query(queryText,
+            function(err, rows) {
+                currentUser = rows[0];
+                res.send(currentUser);
+            });
+
     });
 
     app.post("/user/create", function(req, res) {
