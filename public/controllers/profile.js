@@ -13,7 +13,9 @@ myapp.controller('profileController', function($scope, $http) {
     });
 
     $http.get("/matches/" + 'acarri').success(function(data) {
+        if (data) {
 
+        }
 
 
     });
