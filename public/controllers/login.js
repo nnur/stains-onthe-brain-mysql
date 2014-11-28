@@ -8,4 +8,6 @@ myapp.controller('loginController', function($scope) {
         var password = $scope.pwd;
     }
 
+    console.log('DYLANS BRANCH');
+
 });
