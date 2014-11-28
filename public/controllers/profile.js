@@ -12,6 +12,8 @@ myapp.controller('profileController', function($scope, $http) {
         $scope.preference = data[0].preference;
     });
 
+    //lol
+
     $http.get("/matches/" + 'acarri').success(function(data) {
 
 
