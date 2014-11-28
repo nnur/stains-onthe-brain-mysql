@@ -6,9 +6,9 @@
      $routeProvider
 
      // home page
-     .when('/foo', {
-         templateUrl: 'foo.html',
-         controller: 'mainController'
+     .when('/', {
+         templateUrl: 'pages/login.html',
+         controller: 'loginController'
      })
 
      // about page
