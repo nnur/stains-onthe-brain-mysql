@@ -80,7 +80,7 @@ module.exports = function(app) {
             });
 
     });
-
+    //===============================CREATE USER ===========================================
     app.post("/user/create", function(req, res) {
         console.log(req.body);
 
@@ -110,6 +110,32 @@ module.exports = function(app) {
             }
         });
     });
+    //==========================GET 4 CLEANING PRODUCTS FOR USER'S NEXT LEVEL=============================
+    app.get('/cp_to_show/:username', function(req, res) {
+
+        connection.query('SELECT sts.cp1_id, sts.cp2_id, sts.cp3_id, sts.cp4_id FROM stain_to_show sts WHERE level_number = (SELECT (1 + u.level_num ) FROM user u WHERE (u.username = "' + req.params.username + '"))',
+            function(err, rows) {
+                if (err)
+                    res.send(err);
+                res.json(rows);
+            });
+
+    });
+
+    app.get('/cp_name:cp_id', function(req, res) {
+
+        connection.query('SELECT product_name FROM cleaning_product WHERE product_id = ' + req.params.cp_id,
+
+            function(err, rows) {
+                if (err)
+                    res.send(err);
+                res.json(rows);
+            });
+
+    });
+
+
+
 
 
 }
