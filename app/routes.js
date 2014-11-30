@@ -121,7 +121,7 @@ module.exports = function(app) {
             });
 
     });
-
+    //==========================GET CLEANING PRODUCT NAME WITH ID===================================
     app.get('/cp_name:cp_id', function(req, res) {
 
         connection.query('SELECT product_name FROM cleaning_product WHERE product_id = ' + req.params.cp_id,
@@ -134,7 +134,20 @@ module.exports = function(app) {
 
     });
 
+    //======================GET IMAGE URL FOR CURRENT USER==================================================
 
+    app.get('/img_url/:username', function(req, res) {
+
+        connection.query('SELECT img_url from substance WHERE substance_id = ( SELECT substance_id from stain_to_show WHERE level_number = ( SELECT 1+ level_num from user WHERE (username = "' + req.params.username + '") ) )',
+
+            function(err, rows) {
+                if (err)
+                    res.send(err);
+                res.json(rows);
+            });
+
+    });
+    //======================Make a MyStain==================================================
 
 
 

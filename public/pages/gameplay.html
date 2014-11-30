@@ -16,14 +16,14 @@
 			
 			<div class="sandbox">
 				<div id="animateTest">
-					<center><img src={{_image_path}} alt="probs a stain" data-test="bounceInDown"></center>
+					<center><img ng-src="{{image_path}}" alt="probs a stain" data-test="bounceInDown"></center>
 				</div>
 			</div>
 			<a class="butt btn-big" data-test="bounceInDown">bounceInDown</a>
-			 <button ng-click="choose()">{{cp1}}</button>
-			 <button ng-click="choose()">{{cp2}}</button>
-			 <button ng-click="choose()">{{cp3}}</button>
-			 <button ng-click="choose()">{{cp4}}</button>
+			 <button id = "1" ng-click="choose()">{{cp1}}</button>
+			 <button id = "2" ng-click="choose()">{{cp2}}</button>
+			 <button id = "3" ng-click="choose()">{{cp3}}</button>
+			 <button id = "4" ng-click="choose()">{{cp4}}</button>
 
 			<!-- 			<a class="butt btn-big" data-test="rotateInDownLeft">rotateInDownLeft</a>
 			<a class="butt btn-big" data-test="rotateInDownRight">rotateInDownRight</a>
